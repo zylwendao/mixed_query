@@ -5,7 +5,7 @@ import com.my.mixed.util.Pinyin4JUtil;
 import org.springframework.util.StringUtils;
 
 public class MyMixedQuery {
-    private void setMixedQueryUDN(User param) {
+    private String setMixedQueryUDN(User param) {
         StringBuilder mixedQuery = new StringBuilder();
         if (!StringUtils.isEmpty(param.getName())) {
             mixedQuery.append(param.getName());
@@ -23,5 +23,15 @@ public class MyMixedQuery {
             mixedQuery.append(param.getAge());
         }
         param.setMixedQuery(mixedQuery.toString());
+        return mixedQuery.toString();
+    }
+
+    public static void main(String[] args) {
+        User user = new User();
+        user.setName("松江");
+        user.setAddress("梁山");
+        user.setAge(55);
+        String result = new MyMixedQuery().setMixedQueryUDN(user);
+        System.out.println(result);
     }
 }
